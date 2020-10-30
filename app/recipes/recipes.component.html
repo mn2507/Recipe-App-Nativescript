@@ -1,0 +1,72 @@
+<GridLayout #container
+  backgroundColor="orange"
+  rows="auto, auto, *">
+
+  <!-- Row 1: The custom action bar -->
+  <GridLayout
+    row="0"
+    columns="44, *, auto"
+    class="action-bar-custom">
+    <Label
+      col="1"
+      text="Recipes"></Label>
+    
+    <!-- Wrap the image in a StackLayout to give it a bigger tap target -->
+    <GridLayout
+      col="2"
+      (tap)="showMenu()">
+      <Image
+        src="res://menu"
+        stretch="none"></Image>
+    </GridLayout>
+  </GridLayout>
+
+  <!-- Row 2: The text field to add recipes, and recent button -->
+  <GridLayout
+    row="1"
+    columns="auto, *, auto"
+    [backgroundColor]="isShowingRecent ? '#BBC169' : '#CB1D00'"
+    class="add-bar">
+    <StackLayout
+      class="add-bar-image-container"
+      col="0"
+      (tap)="add('button')">
+      <Image
+        col="0"
+        [src]="isShowingRecent ? 'res://recent' : 'res://add'"></Image>
+    </StackLayout>
+    <TextView #recipeTextField
+      col="1"
+      [(ngModel)]="recipe"
+      (loaded)="handleAndroidFocus(recipeTextField, container)"
+      [hint]="isAndroid ? 'ADD A RECIPE' : 'Add a recipe'"
+      returnKeyType="done"
+      *ngIf="!isShowingRecent"
+      (returnPress)="add('textfield')"></TextView>
+    <Label
+      col="1"
+      text="Recent items"
+      *ngIf="isShowingRecent"
+      class="add-bar-recent-label"></Label>
+   <StackLayout
+     col="2"
+     class="add-bar-recent-container"
+     (tap)="toggleRecent()">
+     <Label
+       class="add-bar-recent-toggle"
+       [text]="isShowingRecent ? 'Done' : 'Recent'"></Label>
+    </StackLayout>
+  </GridLayout>
+
+  <!-- Row 3: The recipe list -->
+  <rp-recipe-list
+    [row]="2"
+    (loading)="showActivityIndicator()"
+    (loaded)="hideActivityIndicator()"
+    [showDeleted]="isShowingRecent"></rp-recipe-list>
+
+  <ActivityIndicator
+    [busy]="isLoading"
+    row="2"></ActivityIndicator>
+
+</GridLayout>

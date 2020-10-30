@@ -1,0 +1,86 @@
+{
+  "name": "sample-recipes",
+  "version": "1.0.0",
+  "description": "A NativeScript-built iOS and Android app for managing recipe lists",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nativescript/sample-Recipes.git"
+  },
+  "keywords": [
+    "NativeScript"
+  ],
+  "author": "TJ VanToll <tj.vantoll@gmail.com> (https://www.tjvantoll.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nativescript/sample-Recipes/issues"
+  },
+  "homepage": "https://github.com/nativescript/sample-Recipes/recipes",
+  "nativescript": {
+    "id": "org.nativescript.recipes",
+    "tns-android": {
+      "version": "6.0.1"
+    },
+    "tns-ios": {
+      "version": "6.0.2"
+    }
+  },
+  "scripts": {
+    "tslint": "tslint -p tsconfig.json",
+    "ns-bundle": "ns-bundle",
+    "start-android-bundle": "npm run ns-bundle --android --run-app",
+    "start-ios-bundle": "npm run ns-bundle --ios --run-app",
+    "build-android-bundle": "npm run ns-bundle --android --build-app",
+    "build-ios-bundle": "npm run ns-bundle --ios --build-app",
+    "publish-ios-bundle": "npm run ns-bundle --ios --publish-app",
+    "generate-android-snapshot": "generate-android-snapshot --targetArchs arm,arm64,ia32 --install",
+    "e2e": "tsc -p e2e && mocha --opts ./e2e/config/mocha.opts",
+    "watch-tests": "tsc -p e2e --watch",
+    "update-app-ng-deps": "update-app-ng-deps",
+    "ns-verify-bundle": "ns-verify-bundle",
+    "update-ns-webpack": "update-ns-webpack"
+  },
+  "dependencies": {
+    "@angular/common": "~8.2.0",
+    "@angular/compiler": "~8.2.0",
+    "@angular/core": "~8.2.0",
+    "@angular/forms": "~8.2.0",
+    "@angular/platform-browser": "~8.2.0",
+    "@angular/platform-browser-dynamic": "~8.2.0",
+    "@angular/router": "~8.2.0",
+    "email-validator": "^2.0.4",
+    "nativescript-angular": "~8.2.0",
+    "nativescript-iqkeyboardmanager": "~1.3.0",
+    "nativescript-social-share": "~1.5.1",
+    "nativescript-unit-test-runner": "0.7.0",
+    "reflect-metadata": "~0.1.8",
+    "rxjs": "^6.4.0",
+    "tns-core-modules": "~6.0.1",
+    "zone.js": "^0.9.1"
+  },
+  "devDependencies": {
+    "@angular/compiler-cli": "8.2.0",
+    "@ngtools/webpack": "8.2.0",
+    "@types/chai": "~4.1.7",
+    "@types/mocha": "~5.2.5",
+    "@types/node": "~10.12.18",
+    "babel-traverse": "6.26.0",
+    "babel-types": "6.26.0",
+    "babylon": "6.18.0",
+    "codelyzer": "^4.5.0",
+    "filewalker": "^0.1.3",
+    "jasmine-core": "^3.3.0",
+    "karma": "4.1.0",
+    "karma-jasmine": "2.0.1",
+    "karma-nativescript-launcher": "^0.4.0",
+    "karma-webpack": "3.0.5",
+    "lazy": "1.0.11",
+    "mocha": "~5.2.0",
+    "mocha-junit-reporter": "~1.18.0",
+    "mocha-multi": "~1.0.1",
+    "nativescript-dev-appium": "next",
+    "nativescript-dev-webpack": "~1.1.0",
+    "tns-android": "6.0.1",
+    "tslint": "^5.4.2",
+    "typescript": "~3.5.3"
+  }
+}
